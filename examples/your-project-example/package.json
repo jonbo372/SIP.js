@@ -9,7 +9,7 @@
     "dev": "node --watch index.js"
   },
   "dependencies": {
-    "sip.js": "file:../../"
+    "sip.js": "file:../../sip.js-0.22.0-server.1.tgz"
   },
   "keywords": ["sip", "server"],
   "author": "Your Name",

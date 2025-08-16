@@ -1,8 +1,8 @@
 {
   "name": "sip.js",
   "title": "SIP.js",
-  "description": "A SIP library for JavaScript",
-  "version": "0.21.2",
+  "description": "A SIP library for JavaScript with server support",
+  "version": "0.22.0-server.1",
   "license": "MIT",
   "main": "./lib/index.js",
   "files": [
@@ -30,7 +30,10 @@
     "library",
     "websocket",
     "javascript",
-    "typescript"
+    "typescript",
+    "server",
+    "node",
+    "tcp"
   ],
   "devDependencies": {
     "@microsoft/api-documenter": "^7.19.22",
