@@ -1,0 +1,16 @@
+{
+  "name": "sip-server-examples",
+  "version": "1.0.0",
+  "description": "SIP.js Server Examples",
+  "type": "module",
+  "main": "simple-server.js",
+  "scripts": {
+    "start": "node simple-server.js",
+    "simple-server": "node simple-server.js",
+    "test-import": "node test-import.js",
+    "library-example": "node library-usage-example.js"
+  },
+  "keywords": ["sip", "server", "example", "library"],
+  "author": "SIP.js",
+  "license": "MIT"
+}

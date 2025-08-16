@@ -17,3 +17,7 @@ export { Core };
 // Export namespaced web
 import * as Web from "./platform/web/index.js";
 export { Web };
+
+// Export namespaced server components
+import * as Server from "./core/server/index.js";
+export { Server };

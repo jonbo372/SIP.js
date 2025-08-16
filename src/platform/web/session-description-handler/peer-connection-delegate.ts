@@ -49,7 +49,7 @@ export interface PeerConnectionDelegate {
   /**
    * Triggered when renegotiation is necessary.
    * @param event - Event.
-   */
+   l*/
   onnegotiationneeded?(event: Event): void;
 
   /**
