@@ -64,14 +64,45 @@ m=audio 8000 RTP/AVP 0 8
 a=rtpmap:0 PCMU/8000
 a=rtpmap:8 PCMA/8000`;
 
-      invitation.accept({
-        statusCode: 200,
-        reasonPhrase: "OK",
-        body: {
-          contentType: "application/sdp",
-          content: customSDP
-        }
-      });
+      try {
+        // Accept the invitation
+        invitation.accept({
+          statusCode: 200,
+          reasonPhrase: "OK",
+          body: {
+            contentType: "application/sdp",
+            content: customSDP
+          }
+        });
+        
+        console.log(`✅ Call established: ${fromUser} <-> ${toUser}`);
+        
+        // Wait 5 seconds then initiate BYE from server side
+        setTimeout(() => {
+          console.log(`⏰ 5 seconds elapsed - server initiating BYE for call ${fromUser} -> ${toUser}`);
+          
+          try {
+            // The invitation object should have a session or dialog for sending BYE
+            // In SIP.js, we need to access the session/dialog to send BYE
+            if (invitation._dialog) {
+              // Use the dialog to send BYE request
+              const byeRequest = invitation._dialog.bye();
+              console.log(`📤 BYE request sent to ${fromUser}`);
+            } else if (invitation.session) {
+              // Alternative: if there's a session object
+              invitation.session.bye();
+              console.log(`📤 BYE request sent via session to ${fromUser}`);
+            } else {
+              console.log(`⚠️  No dialog/session available to send BYE`);
+            }
+          } catch (error) {
+            console.error(`❌ Failed to send BYE: ${error.message}`);
+          }
+        }, 5000);
+        
+      } catch (error) {
+        console.error(`❌ Failed to accept INVITE: ${error.message}`);
+      }
     },
 
     onMessage: (message) => {
